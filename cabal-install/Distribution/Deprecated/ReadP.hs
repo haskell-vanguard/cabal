@@ -125,7 +125,9 @@ instance Monad (P s) where
 #if !(MIN_VERSION_base(4,9,0))
   fail _ = Fail
 #elif !(MIN_VERSION_base(4,13,0))
+#if !MIN_VERSION_base(4,13,0)
   fail = Fail.fail
+#endif
 #endif
 
 instance Fail.MonadFail (P s) where
@@ -190,7 +192,9 @@ instance Monad (Parser r s) where
 #if !(MIN_VERSION_base(4,9,0))
   fail _ = R (const Fail)
 #elif !(MIN_VERSION_base(4,13,0))
+#if !MIN_VERSION_base(4,13,0)
   fail = Fail.fail
+#endif
 #endif
 
 instance Fail.MonadFail (Parser r s) where

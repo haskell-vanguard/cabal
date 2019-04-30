@@ -132,7 +132,9 @@ instance Monad ParsecParser where
     {-# INLINE (>>) #-}
 
 #if !(MIN_VERSION_base(4,13,0))
+#if !MIN_VERSION_base(4,13,0)
     fail = Fail.fail
+#endif
 #endif
 
 instance MonadPlus ParsecParser where
